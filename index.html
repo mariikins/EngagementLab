@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Build-a-Tree Event · Casey Trees × GW</title>
+  <meta name="description" content="Drag, drop and dream up a tree event your DC neighbors would actually show up to.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300..800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header class="topbar">
+    <div class="logos">
+      <img src="assets/casey-trees-logo.png" alt="Casey Trees" class="logo" onerror="this.remove()">
+      <span class="divider" aria-hidden="true"></span>
+      <img src="assets/gw-logo.png" alt="The George Washington University" class="logo" onerror="this.remove()">
+    </div>
+    <div class="progress" aria-hidden="true">
+      <div class="progress-track"><div class="progress-fill" id="progress-fill"></div></div>
+      <svg class="sprout" id="sprout" viewBox="0 0 24 24"><path d="M12 21v-8M12 13c0-4 3-7 7-7 0 4-3 7-7 7ZM12 15c0-3-2.5-5.5-6-5.5 0 3 2.5 5.5 6 5.5Z" fill="#6DBB5E" stroke="#0E6142" stroke-width="1.4" stroke-linejoin="round" stroke-linecap="round"/></svg>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <form id="tree-form" novalidate>
+      <input type="text" name="website" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+
+      <!-- STEP 0 · WELCOME -->
+      <section class="screen active" data-step="0">
+        <p class="eyebrow">Casey Trees × GW · Community Workshop</p>
+        <h1>Build-a-Tree <em>Event</em></h1>
+        <p class="lede">You're the event planner now. Drag in the pieces, name it, and pitch it to the room. There are no wrong answers, just good ideas.</p>
+        <div class="field big">
+          <label for="names" class="label">Who's building today?</label>
+          <input id="names" name="names" type="text" placeholder="Your name(s)" autocomplete="off">
+        </div>
+        <p class="status" data-status></p>
+      </section>
+
+      <!-- STEP 1 · BUILD THE BOARD -->
+      <section class="screen" data-step="1">
+        <p class="eyebrow">Step 1 of 4</p>
+        <h2 class="title">Build your event</h2>
+        <p class="lede small">Drag cards into the matching color slot, or just tap a card. Pick as many as you like. Tap a card on the board to take it back.</p>
+
+        <div class="board" id="board">
+          <div class="slot" data-cat="where"><div class="slot-head">Where</div><div class="slot-body"><span class="hint">drop here</span></div></div>
+          <div class="slot" data-cat="when"><div class="slot-head">When</div><div class="slot-body"><span class="hint">drop here</span></div></div>
+          <div class="slot" data-cat="what"><div class="slot-head">What happens</div><div class="slot-body"><span class="hint">drop here</span></div></div>
+          <div class="slot" data-cat="who"><div class="slot-head">Who's there</div><div class="slot-body"><span class="hint">drop here</span></div></div>
+          <div class="slot" data-cat="how"><div class="slot-head">How I'd hear</div><div class="slot-body"><span class="hint">drop here</span></div></div>
+        </div>
+
+        <p class="preview" id="preview">Your event will show up here as you build it…</p>
+
+        <div class="tray">
+          <div class="tabs" role="tablist" id="tabs"></div>
+          <div class="deck" id="deck"></div>
+        </div>
+      </section>
+
+      <!-- STEP 2 · TABLE DRAW -->
+      <section class="screen" data-step="2">
+        <p class="eyebrow">Step 2 of 4</p>
+        <h2 class="title">What drives you to a table at a local event?</h2>
+        <p class="lede small">Tap everything that would pull you over.</p>
+        <div class="tiles">
+          <label class="tile">
+            <input type="checkbox" name="drives" value="Merch">
+            <span class="tile-in">
+              <svg viewBox="0 0 48 48"><path d="M17 8 8 13l3 9 5-2v20h16V20l5 2 3-9-9-5c-1 4-4 6-7 6s-6-2-7-6Z" fill="#B8E0CB" stroke="#0D4330" stroke-width="2.2" stroke-linejoin="round"/></svg>
+              <b>Merch</b><small>shirts, totes, pins</small>
+            </span>
+          </label>
+          <label class="tile">
+            <input type="checkbox" name="drives" value="An impressive stand">
+            <span class="tile-in">
+              <svg viewBox="0 0 48 48"><path d="M6 18 24 7l18 11Z" fill="#E8C760" stroke="#0D4330" stroke-width="2.2" stroke-linejoin="round"/><path d="M6 18h36v4H6zM10 22v19M38 22v19M14 31h20v10H14z" fill="#DBEBDE" stroke="#0D4330" stroke-width="2.2" stroke-linejoin="round"/></svg>
+              <b>An impressive stand</b><small>it just looks cool</small>
+            </span>
+          </label>
+          <label class="tile">
+            <input type="checkbox" name="drives" value="Freebies">
+            <span class="tile-in">
+              <svg viewBox="0 0 48 48"><path d="M8 19h32v7H8zM11 26h26v15H11z" fill="#D06647" stroke="#0D4330" stroke-width="2.2" stroke-linejoin="round"/><path d="M24 19v22M24 19c-3-6-11-7-10-2 1 3 7 2 10 2Zm0 0c3-6 11-7 10-2-1 3-7 2-10 2Z" fill="none" stroke="#0D4330" stroke-width="2.2" stroke-linejoin="round"/></svg>
+              <b>Freebies</b><small>stickers, bookmarks, raffle, postcards, etc.</small>
+            </span>
+          </label>
+        </div>
+        <div class="field">
+          <label for="drives_other" class="label">Something else?</label>
+          <input id="drives_other" name="drives_other" type="text" placeholder="e.g. a friendly face, music, a dog…">
+        </div>
+      </section>
+
+      <!-- STEP 3 · NAME IT -->
+      <section class="screen" data-step="3">
+        <p class="eyebrow">Step 3 of 4</p>
+        <h2 class="title">Give it a name</h2>
+        <p class="lede small">Make it catchy. Stuck? Roll for one.</p>
+        <div class="namebox">
+          <input id="event_name" name="event_name" type="text" placeholder="Our event is called…" autocomplete="off">
+          <button type="button" class="ghost dice" id="dice">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="3.5" width="17" height="17" rx="3" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="8.5" cy="8.5" r="1.4" fill="currentColor"/><circle cx="15.5" cy="15.5" r="1.4" fill="currentColor"/><circle cx="12" cy="12" r="1.4" fill="currentColor"/><circle cx="15.5" cy="8.5" r="1.4" fill="currentColor"/><circle cx="8.5" cy="15.5" r="1.4" fill="currentColor"/></svg>
+            Inspire me
+          </button>
+        </div>
+      </section>
+
+      <!-- STEP 4 · TELL US -->
+      <section class="screen" data-step="4">
+        <p class="eyebrow">Step 4 of 4</p>
+        <h2 class="title">Sell us on it</h2>
+        <div class="field">
+          <label for="q_why" class="label"><i>a</i>Why would your neighbors come?</label>
+          <textarea id="q_why" name="q_why" rows="3"></textarea>
+        </div>
+        <div class="field">
+          <label for="q_signup" class="label"><i>b</i>What would get someone to sign up for a free tree right there?</label>
+          <textarea id="q_signup" name="q_signup" rows="3"></textarea>
+        </div>
+        <div class="field">
+          <label for="q_walkaway" class="label"><i>c</i>What might make them walk away without signing up?</label>
+          <textarea id="q_walkaway" name="q_walkaway" rows="3"></textarea>
+        </div>
+        <p class="note">Your answers go privately to the Casey Trees × GW team. No one else can see them.</p>
+        <p class="status" data-status></p>
+      </section>
+
+      <!-- NAV -->
+      <div class="nav" id="nav">
+        <button type="button" class="ghost" id="back">Back</button>
+        <button type="button" id="next">Let's go</button>
+      </div>
+    </form>
+
+    <!-- DONE -->
+    <section class="done" id="done" hidden>
+      <p class="eyebrow">Event submitted</p>
+      <h2 class="title">Nice work, planners!</h2>
+      <p class="lede small">Here's your event. Pitch it to the room!</p>
+      <div class="poster" id="poster"></div>
+      <button type="button" class="ghost" id="again">Build another</button>
+    </section>
+  </main>
+
+  <div class="ghost-card" id="drag-ghost" hidden></div>
+  <div class="confetti" id="confetti" aria-hidden="true"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>
